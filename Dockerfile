@@ -18,17 +18,16 @@ FROM centos:centos6
 MAINTAINER Patrick M. Slattery <pslattery@mywebgrocer.org>
 
 # WANdisco yum repo for SVN v1.8 for CentOS v6.x
-ADD /etc/yum.repos.d /etc/yum.repos.d
+ADD https://github.com/patrickmslatteryvt/svn/tree/master/etc /etc
 
 # Install Apache and SVN server and client
 RUN yum install -y httpd mod_dav_svn serf subversion subversion-python subversion-tools
 
-# Optimized httpd.conf and subversion.conf
-ADD /etc/httpd /etc/httpd
 # SVN web access template files
 ADD /var/www /var/www
+ADD https://github.com/patrickmslatteryvt/svn/tree/master/var/www /var/www
 # Startup script
-ADD /usr/local/bin/run-httpd.sh /usr/local/bin/run-httpd.sh
+ADD https://raw.githubusercontent.com/patrickmslatteryvt/svn/master/usr/local/bin/run-httpd.sh /usr/local/bin/run-httpd.sh
 RUN chmod -v +x /usr/local/bin/run-httpd.sh
 
 # Create a test SVN repo
