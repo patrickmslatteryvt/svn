@@ -20,7 +20,7 @@ FROM centos:centos6
 MAINTAINER Patrick M. Slattery <pslattery@mywebgrocer.org>
 
 # Need the WANdisco yum repo for SVN v1.8 for CentOS v6.x
-ADD https://github.com/patrickmslatteryvt/svn /
+# ADD https://github.com/patrickmslatteryvt/svn /
 
 # Install Apache and SVN server and client
 RUN yum install -y httpd mod_dav_svn serf subversion subversion-python subversion-tools
@@ -29,12 +29,12 @@ RUN yum install -y httpd mod_dav_svn serf subversion subversion-python subversio
 # RUN chmod -v +x /usr/local/bin/run-httpd.sh
 
 # Create a test SVN repo
-RUN mkdir -p /srv/svn
+# RUN mkdir -p /srv/svn
 # This is critical, SVN will show nothing to clients if apache:apache does not own all the files.
-RUN chown -cR apache:apache /srv/svn && chown -cR apache:apache /var/www
-USER apache
-RUN svnadmin create /srv/svn/test_repo
+# RUN chown -cR apache:apache /srv/svn && chown -cR apache:apache /var/www
+# USER apache
+# RUN svnadmin create /srv/svn/test_repo
 
 EXPOSE 80 443
-USER root
-CMD ["/usr/local/bin/run-httpd.sh"]
+# USER root
+# CMD ["/usr/local/bin/run-httpd.sh"]
