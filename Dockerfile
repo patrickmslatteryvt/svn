@@ -23,7 +23,8 @@ MAINTAINER Patrick M. Slattery <pslattery@mywebgrocer.org>
 # ADD https://github.com/patrickmslatteryvt/svn /
 
 # Install Apache and SVN server and client
-RUN yum install -y httpd mod_dav_svn serf subversion subversion-python subversion-tools
+RUN yum install -y httpd
+# mod_dav_svn serf subversion subversion-python subversion-tools
 
 # Startup script
 # RUN chmod -v +x /usr/local/bin/run-httpd.sh
@@ -38,3 +39,5 @@ RUN yum install -y httpd mod_dav_svn serf subversion subversion-python subversio
 EXPOSE 80 443
 # USER root
 # CMD ["/usr/local/bin/run-httpd.sh"]
+
+CMD ["/bin/bash"]
