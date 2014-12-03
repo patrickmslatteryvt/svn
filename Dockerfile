@@ -18,7 +18,7 @@ FROM centos:centos6
 MAINTAINER Patrick M. Slattery <pslattery@mywebgrocer.org>
 
 # Need the WANdisco yum repo for SVN v1.8 for CentOS v6.x
-ADD https://github.com/patrickmslatteryvt/svn
+ADD https://github.com/patrickmslatteryvt/svn /
 
 # Install Apache and SVN server and client
 RUN yum install -y httpd mod_dav_svn serf subversion subversion-python subversion-tools
