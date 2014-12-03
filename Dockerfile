@@ -10,6 +10,8 @@
 #          \____\______/
 #
 #  Subversion v1.8.x (latest) container for test purposes with Quay.io
+#  Test a build locally with:
+#  docker build -t svn:latest https://raw.githubusercontent.com/patrickmslatteryvt/svn/master/Dockerfile
 #
 #===============================================================================
 
@@ -24,7 +26,7 @@ ADD https://github.com/patrickmslatteryvt/svn /
 RUN yum install -y httpd mod_dav_svn serf subversion subversion-python subversion-tools
 
 # Startup script
-RUN chmod -v +x /usr/local/bin/run-httpd.sh
+# RUN chmod -v +x /usr/local/bin/run-httpd.sh
 
 # Create a test SVN repo
 RUN mkdir -p /srv/svn
@@ -34,5 +36,5 @@ USER apache
 RUN svnadmin create /srv/svn/test_repo
 
 EXPOSE 80 443
-
+USER root
 CMD ["/usr/local/bin/run-httpd.sh"]
